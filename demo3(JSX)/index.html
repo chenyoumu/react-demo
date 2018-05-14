@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSX</title>
+</head>
+<body>
+  <div id="app"></div>
+</body>
+</html>
+<script src="../build/react.js"></script>
+<script src="../build/react-dom.js"></script>
+<script src="../build/browser.min.js"></script>
+<script type="text/babel">
+
+  /*JSX语法允许直接在模板插入JavaScript变量*/
+  let arr = [
+    <h1 key="1">有志者，事竟成</h1>,
+    <h2 key="2">苦心人，天不负</h2>
+  ];
+  ReactDOM.render(
+    <div>{arr}</div>,
+    document.getElementById('app')
+  )
+
+</script>

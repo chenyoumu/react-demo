@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>PropTypes</title>
+  <title>getDefaultProps</title>
 </head>
 <body>
   <div id="app"></div>
@@ -13,18 +13,20 @@
 <script src="../build/browser.min.js"></script>
 <script type="text/babel">
 
-  let MyTitle = React.createClass({
-    PropTypes: {
-      title: React.PropTypes.string.isRequired
+  /*组件默认值*/
+  let HelloMessage = React.createClass({
+    getDefaultProps () {
+      return {
+        message: '有志者，事竟成'
+      }
     },
-    render: function () {
-      return <h1> 注意，这是标题：{this.props.title} </h1>
+    render () {
+      return <h1>要相信{this.props.message}</h1>
     }
   });
 
-  let data = '蜀道难';
   ReactDOM.render(
-    <MyTitle title={data}/>,
+    <HelloMessage/>,
     document.getElementById('app')
   )
 

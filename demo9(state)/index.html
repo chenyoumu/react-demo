@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>state</title>
+</head>
+<body>
+  <div id="app"></div>
+</body>
+</html>
+<script src="../build/react.js"></script>
+<script src="../build/react-dom.js"></script>
+<script src="../build/browser.min.js"></script>
+<script type="text/babel">
+
+  /*state*/
+  let LikeButton = React.createClass({
+    getInitialState () {
+      return {
+        like: '???'
+      }
+    },
+    likeClick () {
+      this.setState({like: '喜欢'});
+    },
+    unLikeClick () {
+      /*以下写法可以验证this.setState方法是异步的*/
+      /*
+      Promise.resolve(this.setState({liked: '不喜欢'})).then(() => {
+        console.log(this.state.liked);    // '不喜欢'
+      })
+      this.setState({liked: '不喜欢'});
+      console.log(this.state.liked);    // undefined
+      */
+      this.setState({like: '不喜欢'})
+    },
+    render () {
+      return <div>
+        <p>曾小贤{this.state.like}胡一菲</p>
+        <div>
+          <button onClick={this.likeClick}>喜欢</button>&emsp;&emsp;&emsp;
+          <button onClick={this.unLikeClick}>不喜欢</button></div>
+      </div>
+    }
+  });
+
+  ReactDOM.render(
+    <LikeButton/>,
+    document.getElementById('app')
+  )
+
+</script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>form</title>
+</head>
+<body>
+  <div id="app"></div>
+</body>
+</html>
+<script src="../build/react.js"></script>
+<script src="../build/react-dom.js"></script>
+<script src="../build/browser.min.js"></script>
+<script type="text/babel">
+
+  let Input = React.createClass({
+    getInitialState () {
+      return {
+        value: 'Hello'
+      }
+    },
+    handleClick (e) {
+      this.setState({
+        value: e.target.value
+      });
+      console.log(e);
+    },
+    render () {
+      let value = this.state.value;
+      return (
+        <div>
+          <input type="text" value={value} onChange={this.handleClick}/>
+          <h2>{value}</h2>
+        </div>
+      )
+    }
+  });
+
+  ReactDOM.render(
+    <Input/>,
+    document.getElementById('app')
+  )
+
+</script>
